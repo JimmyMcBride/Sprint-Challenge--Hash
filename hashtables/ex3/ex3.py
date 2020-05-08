@@ -3,23 +3,26 @@ def intersection(arrays):
     cache = {}
 
     for arr in arrays:
-        for key, value in enumerate(arr):
-            print(key, value)
-            if value not in cache:
-                cache[value] = key
+        for item in arr:
+            if item in cache:
+                cache[item] += 1
+            else:
+                cache[item] = 1
+
+    for key in cache.keys():
+        if cache[key] == len(arrays):
+            result.append(key)
 
     return result
 
 
-print(intersection([[1, 2, 3], [1, 4, 5, 3], [1, 6, 7, 3]]))
+# print(intersection([[1, 2, 3], [1, 4, 5, 3], [1, 6, 7, 3]]))
 
-# if __name__ == "__main__":
-#     arrays = []
+if __name__ == "__main__":
+    arrays = []
 
-#     arrays.append(list(range(1000000, 2000000)) + [1, 2, 3])
-#     arrays.append(list(range(2000000, 3000000)) + [1, 2, 3])
-#     arrays.append(list(range(3000000, 4000000)) + [1, 2, 3])
+    arrays.append(list(range(1000000, 2000000)) + [1, 2, 3])
+    arrays.append(list(range(2000000, 3000000)) + [1, 2, 3])
+    arrays.append(list(range(3000000, 4000000)) + [1, 2, 3])
 
-#     print(arrays)
-
-#     print(intersection(arrays))
+    print(intersection(arrays))

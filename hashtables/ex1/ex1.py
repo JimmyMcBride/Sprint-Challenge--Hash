@@ -1,25 +1,21 @@
 def get_indices_of_item_weights(weights, length, limit):
     cache = {}
 
-    for i in range(len(weights)):
-        if weights[i] > limit:
-            pass
+    for key, value in enumerate(weights):
+        if value in cache:
+            cache[value].append(key)
         else:
-            if weights[i] not in cache:
-                cache[i] = weights[i]
-            for key, value in enumerate(weights):
-                if key == i or value > limit:
-                    pass
-                else:
-                    my_sum = cache[i] + value
-                    print(
-                        f"my sum: cache[i] ({cache[i]}) + value ({value}) = {cache[i] + value}"
-                    )
-                    if my_sum == limit:
-                        print(f"{(key, i)}")
-                        return (key, i)
+            cache[value] = [key]
+
+    for value in cache:
+        if limit - value in cache:
+            if cache[limit - value] is cache[value]:
+                if len(cache[value]) >= 2:
+                    return (cache[limit - value][1], cache[value][0])
+            else:
+                return (cache[limit - value][0], cache[value][0])
 
     return None
 
 
-# print(get_indices_of_item_weights([12, 6, 7, 14, 19, 3, 0, 25, 40], 9, 7))
+print(get_indices_of_item_weights([12, 6, 7, 14, 19, 3, 0, 25, 40], 9, 7))
