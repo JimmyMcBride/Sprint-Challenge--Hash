@@ -58,4 +58,3 @@ used. (Though you can make a `dict` behave like a set, if you wish.)*
 * [Hash
   Tables](https://github.com/LambdaSchool/Sprint-Challenge--Hash-BC/tree/master/hashtables):
   solve any 3 of the 5 problems. Solve more for more points.
-
